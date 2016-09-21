@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BleToDo0._2.Models.Afazer>
+@{
+    ViewBag.Title = "Principal";
+}
+
+<div class="jumbotron">
+    <form action="#">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="sample3">
+            <label class="mdl-textfield__label" for="sample3">Digite sua notação</label>
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+            <i class="material-icons">add</i>
+        </button>
+    </form>
+
+    @foreach (var item in Model)
+    {
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">@Html.DisplayFor(modelItem => item.AFZ_TITULO)</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                @Html.DisplayFor(modelItem => item.AFZ_DESCRICAO)
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Detalhes
+                </a>
+                <a>
+                        <label for="switch1" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                            @Html.DisplayFor(modelItem => item.AFZ_ATIVO, "mdl - switch__input")
+
+                            <span class="mdl-switch__label">Ativar/Desativar</span>
+                        </label>
+
+</a>
+            </div>
+        </div>
+    }
+
+
+
+</div>

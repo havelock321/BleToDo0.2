@@ -1,0 +1,50 @@
+﻿@model BleToDo0._2.Models.Afazer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Afazer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AFZ_TITULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFZ_TITULO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AFZ_DESCRICAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFZ_DESCRICAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AFZ_ATIVO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFZ_ATIVO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AFZ_DTCRIACAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFZ_DTCRIACAO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

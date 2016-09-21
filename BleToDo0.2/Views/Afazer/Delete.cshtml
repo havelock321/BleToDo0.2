@@ -1,0 +1,56 @@
+﻿@model BleToDo0._2.Models.Afazer
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Afazer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AFZ_TITULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFZ_TITULO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AFZ_DESCRICAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFZ_DESCRICAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AFZ_ATIVO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFZ_ATIVO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AFZ_DTCRIACAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AFZ_DTCRIACAO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BleToDo0._2.Models.Afazer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--4dp">
+    <thead>
+        <tr>
+            <th> @Html.DisplayNameFor(model => model.AFZ_ATIVO)</th>
+            <th class="mdl-data-table__cell--non-numeric">@Html.DisplayNameFor(model => model.AFZ_DESCRICAO)</th>
+
+            <th>@Html.DisplayNameFor(model => model.AFZ_DTCRIACAO)</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td class="mdl-data-table__cell--non-numeric">@Html.DisplayFor(modelItem => item.AFZ_ATIVO)</td>
+                <td>@Html.DisplayFor(modelItem => item.AFZ_DESCRICAO)</td>
+                <td>@Html.DisplayFor(modelItem => item.AFZ_DTCRIACAO)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
