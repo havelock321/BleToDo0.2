@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using static BleToDo0._2.Types.Types;
 
 namespace BleToDo0._2.Models
 {
@@ -19,11 +21,20 @@ namespace BleToDo0._2.Models
         [Display(Name = "Descrição: ")]
         public string AFZ_DESCRICAO { get; set; }
 
-        [Display(Name = "Status: ")]
-        public bool AFZ_ATIVO { get; set; }
+        [Display(Name = "Nivel de Prioridade")]
+        [Range(1, int.MaxValue, ErrorMessage = "Selecione um Nivel valido!")]
+        public Prioridades AFZ_NIVEL { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Data de Criação: ")]
-        public DateTime? AFZ_DTCRIACAO { get; set; }
+
+        [Display(Name = "Categoria:")]
+        [Range(1, int.MaxValue, ErrorMessage = "Selecione uma Categoria!")]
+        public Categorias AFZ_CATEGORIA { get; set; }
+
+
+        [Display(Name = "Status: ")]
+        public bool AFZ_DONE { get; set; }
+
+        [Browsable(false)]
+        public string ApplicationUserId { get; set; }
     }
 }

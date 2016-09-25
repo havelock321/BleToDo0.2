@@ -4,6 +4,7 @@ using BleToDo0._2.Context;
 using BleToDo0._2.Models;
 using Repositories;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace BleToDo0._2.Controllers
 {
@@ -13,13 +14,20 @@ namespace BleToDo0._2.Controllers
         GenericRepository<Afazer> _genericRepository = new GenericRepository<Afazer>(new BaseContext());
 
         // GET: TAfazers
-        public ActionResult Index(string SearchFor)
+        public ActionResult Index(string SearchFor, string novo)
         {
-
-            if (SearchFor != "" && SearchFor != null)
-                return View(_genericRepository.SearchFor(a => a.AFZ_DESCRICAO.StartsWith(SearchFor) && a.AFZ_ATIVO == true));
+            if (novo != "" && novo != null)
+            {
+                return RedirectToAction("Create", "Afazer");
+            }
             else
-                return View(_genericRepository.SearchFor(a => a.AFZ_ATIVO == true));
+            {
+                if (SearchFor != "" && SearchFor != null)
+                    return View(_genericRepository.SearchFor(a => a.AFZ_DESCRICAO.StartsWith(SearchFor) || a.AFZ_DESCRICAO.StartsWith(SearchFor)));
+                
+                 return View(_genericRepository.GetAll());
+            }
+            
 
         }
 
@@ -49,6 +57,7 @@ namespace BleToDo0._2.Controllers
         {
             if (ModelState.IsValid)
             {
+                Afazer.ApplicationUserId = User.Identity.GetUserId();
                 await _genericRepository.InsertAsync(Afazer);
                 return RedirectToAction("Index");
             }
@@ -76,6 +85,7 @@ namespace BleToDo0._2.Controllers
         {
             if (ModelState.IsValid)
             {
+                Afazer.ApplicationUserId = User.Identity.GetUserId();
                 await _genericRepository.EditAsync(Afazer);
                 return RedirectToAction("Index");
             }

@@ -12,6 +12,8 @@ namespace Repositories
 
         private readonly DbContext _dbContext;
 
+  
+
         public GenericRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
@@ -34,7 +36,15 @@ namespace Repositories
 
         public IQueryable<TEntity> SearchFor(Expression<Func<TEntity, bool>> predicate)
         {
+
+          
+            if (DbSet.Where(predicate).Count() == 0)
+                return DbSet;
+
             return DbSet.Where(predicate);
+         
+             
+
         }
 
         public async Task EditAsync(TEntity entity)

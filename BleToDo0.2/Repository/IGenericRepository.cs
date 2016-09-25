@@ -19,5 +19,6 @@ namespace Repositories
         Task InsertAsync(TEntity entity);
 
         Task DeleteAsync(TEntity entity);
-    }
+       
+        }
 }
